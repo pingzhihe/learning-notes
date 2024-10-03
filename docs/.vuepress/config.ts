@@ -14,7 +14,16 @@ export default defineUserConfig({
     sidebar: [
       {
         text: 'Guide',
-        children: ['/'],
+        link: '/guide/',
+      },
+      {
+        text: 'Rust Learning',
+        link: '/rust-learning/',
+        children: [
+          {text: 'Number Types',  // display on the side bar
+            link: '/rust-learning/Num-type.md',
+          },
+        ],
       },
     ],
   }),

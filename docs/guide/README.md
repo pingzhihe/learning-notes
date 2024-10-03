@@ -1,1 +1,9 @@
-# Guide\n\nThis is the guide page.
+# Guide
+
+This is the guide page.
+
+## How to deploy
+
+```
+npm run deploy
+```

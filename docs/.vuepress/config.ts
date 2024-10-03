@@ -1,6 +1,8 @@
 import { defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
+import searchPlugin from '@vuepress/plugin-search'
+import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default defineUserConfig({
   base: '/learning-notes/',
@@ -15,6 +17,9 @@ export default defineUserConfig({
       {
         text: 'Guide',
         link: '/guide/',
+        children: [
+          {text: 'Shortkeys', link: '/guide/shortkeys.md'},
+        ],
       },
       {
         text: 'Rust Learning',
@@ -25,7 +30,18 @@ export default defineUserConfig({
           },
         ],
       },
+      {
+        text: 'Quantum Computing',
+        link: '/quantum-computing/',
+        children: [
+          {text: 'Quantum algorithms', link: "/quantum-computing/shor's algotighm.md"},
+        ],
+      },
     ],
   }),
   bundler: viteBundler(),
+  plugins: [
+    searchPlugin(),
+    markdownMathPlugin(),
+  ],
 })

@@ -14,7 +14,10 @@
   "license": "ISC",
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-rc.17",
+    "@vuepress/plugin-markdown-math": "^2.0.0-rc.52",
+    "@vuepress/plugin-search": "^2.0.0-rc.52",
     "@vuepress/theme-default": "^2.0.0-rc.52",
-    "vuepress": "^2.0.0-rc.17"
+    "vuepress": "^2.0.0-rc.17",
+    "vuepress-plugin-katex": "^0.3.0"
   }
 }

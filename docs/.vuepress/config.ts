@@ -35,8 +35,23 @@ export default defineUserConfig({
         link: '/quantum-computing/',
         children: [
           {text: 'Quantum algorithms', link: "/quantum-computing/shor's algotighm.md"},
+          {text: "Week 11", link:"/quantum-computing/week11.md"},
         ],
       },
+      {
+        text: 'Statical Machine Learning',
+        link: '/stat-machine-learning/',
+        children: [
+          {text: 'Bayesian Linear Regression', link: '/stat-machine-learning/Bayesian.md'},
+        ],
+      },
+      {
+        text: 'Software Project Management',
+        link: '/SPM/',
+        children: [
+          {text: 'Lecture', link: '/SPM/lec.md'},
+        ],
+      }
     ],
   }),
   bundler: viteBundler(),

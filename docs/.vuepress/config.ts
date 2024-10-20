@@ -34,6 +34,7 @@ export default defineUserConfig({
         text: 'Quantum Computing',
         link: '/quantum-computing/',
         children: [
+          {text: 'QAOA', link: '/quantum-computing/QAOA.md'},
           {text: 'Quantum algorithms', link: "/quantum-computing/shor's algotighm.md"},
           {text: "Week 11", link:"/quantum-computing/week11.md"},
         ],

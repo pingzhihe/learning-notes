@@ -4,3 +4,4 @@
 ## Bayesian Linear Regression
 
 [Bayesian Regression](./Bayesian.md)
+

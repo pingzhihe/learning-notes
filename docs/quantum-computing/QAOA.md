@@ -8,7 +8,7 @@ each edge $(i,j)$, it contributes to the cut if $x_i \neq x_j$.
 
 ### QUBO Formulation
 - The MaxCut objective function is exressed as:\
-Maximize $ \sum_{(i,j) \in E} w_ij (1 - x_i x_j)$
+Maximize $\sum_{(i,j) \in E} w_ij (1 - x_i x_j)$
     
 ### Hamiltonian
 Using the substitution, $x_i = \frac{1 - Z_i}{2}$, we can formulate the equtaion:
@@ -22,7 +22,31 @@ Where $|E|$ is the size of the edge
 - **Goal**: To find the smallest set of vertices such that each edge in the graph has at least one endpoint in the set.
 - **Binary Representation**: For each vertex $j$, $x_j=1$ if $j$ is in the vertex cover, and $x_j=0$ otherwise
 ### QUBO Formulation
+Minimize $\sum_{j \in V}{x_j}$,\
+for all $(i,j)$ in Edge $E$ , $x_i + x_j \geq 1$
 
+For the constraint of MVC, we using the penalty function: $P(1-x-y+xy)$
+
+**The penalty function can convert a constrinat problem to an unconstrained problem**\
+The unconstrained alternative for MVC is ($P$: Penalty Coefficient, $w_j$: weight to vertex $j$, usually $w_j = 1$):
+$$
+\text{Minimize } \sum_{j \in V}{w_j x_j} + P\left(\sum_{(i,j)\in E} (1 - x_i - x_j + x_i x_j)\right)
+$$
+
+### Hamiltonian
+Substitute $x_i = \frac{1 - Z_i}{2}$, we can get the Hamiltonian for MVC:
+$$
+\begin{align}
+y &= \sum_{j\in V} \frac{(1-z_j)w_j}{2} + P \sum_{(i,j)\in E} \left[1-\frac{1-z_j}{2}-\frac{1-z_i}{2}+\frac{1-z_j}{2}\frac{1-z_i}{2}\right] \\
+&= \frac{|V|w_j}{2} - \sum_{j\in V}w_j\frac{z_j}{2} + P \sum_{(i,j)\in E} \left[1-\frac{1}{2}+\frac{z_j}{2}-\frac{1}{2}+\frac{z_i}{2}+\frac{1-z_i-z_j+z_iz_j}{4}\right] \\
+&= \frac{|V|w_j}{2} - \sum_{j\in V}w_j\frac{z_j}{2} + P \sum_{(i,j)\in E} \left[\frac{1+z_iz_j+z_i+z_j}{4}\right]
+\end{align}
+$$
+Then we have:
+$$
+\hat{H}_\text{MVC} = -\sum_{j\in V} w_j \frac{Z_j}{2} + P \sum_{(i,j)\in E} \left[\frac{Z_iZ_j + Z_i + Z_j}{4}\right] + \frac{|V|w_j}{2}\mathbb{I} + \frac{|E|P}{4}\mathbb{I}
+$$
+where $|V|$ is the number of vertices, $|E|$ is the number of edges.
 
 ## QUBO and Ising Model
 The **Ising Model** is a mathematicla formulation used in quantum systems to encode **Optimization Problems**.

@@ -103,5 +103,37 @@ $$
 
 The X, Y, and Z Pauli matrices are ways of “flipping” the Bloch sphere 180◦ about the x, y, and z axes respectively.
 
-<img src="./images/Rotation-y.png" alt="Rotation-y" width=75%/>
+<img src="./images/Rotation-y.png" alt="Rotation-y" width=60%/>
 
+\
+\
+A generic qubit is of the form
+$$
+|\psi\rangle = c_0|0\rangle + c_1|1\rangle
+$$
+where $|c_0|^2 + |c_1|^2 = 1$.
+The equation can be written as:
+$$
+|\psi\rangle = \cos(\theta)|0\rangle + e^{i\phi}\sin(\theta)|1\rangle
+$$
+with only two parameters $\theta$ and $\phi$ to describe the state.
+
+<img src="./images/bloch-sphere.png" alt="bloch-sphere" width=50%/> 
+
+- A phase shift gate is defined as 
+$$
+R(\theta) = \begin{bmatrix}  1 & 0 \\ 0 & e^{i\theta} \end{bmatrix}
+$$
+- Sometimes we want to rorate a particular number of degrees around the x,y or z axis, which can be represented as:
+$$
+R_x(\theta) = \cos{\frac{\theta}{2} I} - i \sin{\frac{\theta}{2}X} = \begin{bmatrix}  \cos{\frac{\theta}{2}} & -i \sin{\frac{\theta}{2}} \\
+- i \sin{\frac{\theta}{2}} & \cos{\frac{\theta}{2}} \end{bmatrix}
+$$
+
+$$
+R_y(\theta) = \cos{\frac{\theta}{2} I} - i \sin{\frac{\theta}{2}Y} = \begin{bmatrix}  \cos{\frac{\theta}{2}} & - \sin{\frac{\theta}{2}} \\
+\sin{\frac{\theta}{2}} & \cos{\frac{\theta}{2}} \end{bmatrix}
+$$
+$$
+R_z(\theta) = \cos{\frac{\theta}{2} I} - i \sin{\frac{\theta}{2}Z} = \begin{bmatrix}  e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{bmatrix}
+$$

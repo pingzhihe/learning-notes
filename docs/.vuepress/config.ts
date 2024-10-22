@@ -35,6 +35,7 @@ export default defineUserConfig({
         link: '/quantum-computing/',
         children: [
           {text: 'Basic computing and quantum computing Theory', link: '/quantum-computing/Basic.md'},
+          {text: 'Teleportation', link: '/quantum-computing/Teleportation.md'},
           {text: 'QAOA', link: '/quantum-computing/QAOA.md'},
           {text: 'Quantum algorithms', link: "/quantum-computing/shor's algotighm.md"},
           {text: "Week 11", link:"/quantum-computing/week11.md"},

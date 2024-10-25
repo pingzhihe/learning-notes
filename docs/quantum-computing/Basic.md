@@ -137,3 +137,27 @@ $$
 $$
 R_z(\theta) = \cos{\frac{\theta}{2} I} - i \sin{\frac{\theta}{2}Z} = \begin{bmatrix}  e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{bmatrix}
 $$
+
+
+## Basic Quantum Mechanics
+
+The time evoluation of the state of a closed quantum system is described by the **Schrödinger equation**:
+$$
+i\hbar \frac{d|\psi\rangle}{dt} = H|\psi\rangle
+$$
+$\hbar$ is a physical constant known as *Planck's constant* whose value must be experimentally determined.
+
+where $H$ is the **Hamiltonian** of the system.
+
+
+**Density matrix**
+Density matrix or density operator ($\rho$) is an alternative formulation for state vectors.
+- The trace of a density matrix $tr(\rho) = 1$.
+
+The evolution of a closed quantum system is described by a *unitary transformation*.That is, the state $\rho$ of the system at time $t_1$ is related to the state $rho'$ of the system at time $t_2$ by a unitary operator $U$ which depends only on the time $t_1$ and $t_2$
+$$
+\rho' = U\rho U^{\dagger}
+$$
+
+A pure state satisfied $tr(\rho^2) = 1$, $\rho^2 = \rho$\
+For pure state: $\lambda = 1$ or $\lambda = 0$, $det(\rho) = \lambda_1 \lambda_2 = 0$   

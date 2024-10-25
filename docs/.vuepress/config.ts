@@ -55,6 +55,13 @@ export default defineUserConfig({
         children: [
           {text: 'Lecture', link: '/SPM/lec.md'},
         ],
+      },
+      {
+        text: 'AI-planning',
+        link:'/AI-planning/',
+        children: [
+          {text: 'Revision', link: '/AI-planning/revision.md'},
+        ],
       }
     ],
   }),

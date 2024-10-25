@@ -6,4 +6,6 @@
 
 
 [Basic](./Basic.md)\
-[Qubo and QAOA(Week 5-6)](./QAOA.md)
+[Qubo and QAOA(Week 5-6)](./QAOA.md)\
+[QKD and QFT (week 7)](./QFT.md)\
+[QFE and Shor's Algorithm(week8)](./QFE.md)

@@ -47,6 +47,8 @@ export default defineUserConfig({
         link: '/stat-machine-learning/',
         children: [
           {text: 'Bayesian Linear Regression', link: '/stat-machine-learning/Bayesian.md'},
+          {text: 'Linear regression and logistic regresion', link:'/stat-machine-learning/revision.md'},
+          {text: 'Bais', link:'/stat-machine-learning/revision-2.md'},
         ],
       },
       {

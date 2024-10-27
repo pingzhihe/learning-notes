@@ -17,6 +17,7 @@ export default defineUserConfig({
       {
         text: 'Guide',
         link: '/guide/',
+        collapsible: true,
         children: [
           {text: 'Shortkeys', link: '/guide/shortkeys.md'},
         ],
@@ -24,6 +25,7 @@ export default defineUserConfig({
       {
         text: 'Rust Learning',
         link: '/rust-learning/',
+        collapsible: true,
         children: [
           {text: 'Number Types',  // display on the side bar
             link: '/rust-learning/Num-type.md',
@@ -33,6 +35,7 @@ export default defineUserConfig({
       {
         text: 'Quantum Computing',
         link: '/quantum-computing/',
+        collapsible: true,
         children: [
           {text: 'Basic computing and quantum computing Theory', link: '/quantum-computing/Basic.md'},
           {text: 'Teleportation', link: '/quantum-computing/Teleportation.md'},
@@ -45,15 +48,18 @@ export default defineUserConfig({
       {
         text: 'Statical Machine Learning',
         link: '/stat-machine-learning/',
+        collapsible: true,  
         children: [
           {text: 'Bayesian Linear Regression', link: '/stat-machine-learning/Bayesian.md'},
           {text: 'Linear regression and logistic regresion', link:'/stat-machine-learning/revision.md'},
           {text: 'Bais', link:'/stat-machine-learning/revision-2.md'},
+          {text: 'SVM, Kernel Methods', link: '/stat-machine-learning/svm.md'},
         ],
       },
       {
         text: 'Software Project Management',
         link: '/SPM/',
+        collapsible: true,
         children: [
           {text: 'Lecture', link: '/SPM/lec.md'},
         ],
@@ -61,6 +67,7 @@ export default defineUserConfig({
       {
         text: 'AI-planning',
         link:'/AI-planning/',
+        collapsible: true,
         children: [
           {text: 'Revision', link: '/AI-planning/revision.md'},
         ],

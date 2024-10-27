@@ -6,6 +6,8 @@
 
 [SVM, Kernel Methods](./svm.md)
 
+[Perception, Neural network, CNN, RNN, Transformer](./ann.md)
+
 [Multi Arm Bandit](./Multi-Armed-Bandits.md)
 
 [Bayesian Regression](./Bayesian.md)

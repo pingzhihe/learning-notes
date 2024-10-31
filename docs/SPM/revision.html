@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>revision.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="agile-sdlc">Agile SDLC</h2>
+<h3 id="agile-manifesto"><strong>Agile manifesto</strong></h3>
+<ul>
+<li>Individuals &amp; interactions over process and tools</li>
+<li>Working software over comprehensive documentation</li>
+<li>Customer collaboration over contract negotiation</li>
+<li>Responding to change over following the plan</li>
+</ul>
+<p><strong>Scrum</strong> <br>
+Scrum is a lightweight framework that helps teams and organizations generate value and is based on transparency, inspection and adapatition.</p>
+<h3 id="scrum-team-accountabilities"><strong>Scrum team/ Accountabilities</strong></h3>
+<p><strong>Scrum Master</strong>: (促进团队合作, 沟通, 减少障碍): Fostering Communication, Agile Coaching, Protecting the Team, Team support, Remove obscale</p>
+<p><strong>Product Owner</strong> (manage requirement, manage product backlog, adjuct priority, decide what can be deliverable) Terminating a sprint, Participating in daily scrums,Managing product backlog, Anticipating client needs</p>
+<p><strong>Dev Team</strong>: Self organization, Cross functional,Estimates possible release date of features</p>
+<p><strong>Other Agile frameworkds</strong></p>
+<p><strong>Kanban</strong>: Visualising work,
+Limiting work progress,
+Maximising effciency,
+Focous on reducing the time taken to take a project to finish</p>
+<p><strong>eXtremre Programing</strong>: Frequencet releases in short development cycles
+,Intended to improve productivity and introduce checkpoints
+,<strong>Pair programming</strong></p>
+<h2 id="project-schdule">Project Schdule</h2>
+<p>Project Schedule is used and maintained throughout the project to monitor and track project progress – it is a living document.</p>
+<p>Project schedule contain 1. Duration and dependencies for each task 2. People and physical resources required by each task 3. Milestones and deliverables 4. Project Timeline</p>
+<p><strong>Waterfall (Predictive) Process</strong></p>
+<ul>
+<li><strong>Constraint</strong>: scope (requirement). They are usually defined and fixed at the start of the project</li>
+<li><strong>Plan driven</strong> This process is plan-driven, meaning that a detailed plan is made at the beginninng of the project.</li>
+<li><strong>Estimates</strong>: The plan creates estimates for the cost and time required to complete the project based on the <em>fixed scope</em></li>
+</ul>
+<p><strong>Agile(Adaptive) Process</strong></p>
+<ul>
+<li><strong>Constraint</strong>: In agile, the constraints are <strong>Cost and time</strong></li>
+<li><strong>Value/Vision</strong>: The focus is on delivering the most valuable features according to the business needs, rather than a pre-defined set of requirements.</li>
+<li><strong>Estimates</strong> Agile work within fixed time and cost, with the scope being adjusted based on what can be delivered in that time.</li>
+</ul>
+<p><strong>Key Comparison</strong></p>
+<ul>
+<li><strong>Water fall</strong> The scope is fixed, cost and time estimates are derived from that fixed scope</li>
+<li><strong>Agile</strong> Time and cost are fixed, while the scope is flexible and can be adjusted based on value delivered.</li>
+</ul>
+<p><strong>Examples of Task Dependencies</strong></p>
+<ul>
+<li>Finish-to-Start: Predecessor must finish before Successor can start</li>
+<li>Start-to-Start: Predecessor must start before Successor can start</li>
+<li>Finish-to-Finish: Predecessor must finish before the Successor can Finish</li>
+<li>Start-to-Finish: Predecessor must start before the Successor can finish</li>
+</ul>
+<h2 id="outsouringprocurementcontracts">Outsouring/Procurement/Contracts</h2>
+<p><strong>Outsouring :</strong> The practice of engaging an external party (under contract) to perform services or create goods that are traditionally performed in-house by the company's own employees.</p>
+<ul>
+<li>Onshoring: Relocating activities inside national borders to access targeted benefits. (Sydney - Brisbane)</li>
+<li>Nearshoring: Activities relocated to another country with close proximity e.g. New Zealand, Indonesia.</li>
+<li>Offshoring: Activities relocated to another country irrelevant of geographical location and time zones.</li>
+</ul>
+<p><strong>Procurement</strong> buy (outsource) any products or services from outside the organisation</p>
+<table>
+<thead>
+<tr>
+<th><strong>Procurement Phase</strong></th>
+<th><strong>Key Activities</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plan</strong></td>
+<td>1. Consulting key stakeholders to define the real need</td>
+</tr>
+<tr>
+<td></td>
+<td>2. Analyzing how the supply market works</td>
+</tr>
+<tr>
+<td></td>
+<td>3. Assessing risks</td>
+</tr>
+<tr>
+<td></td>
+<td>4. Defining the best procurement strategy to meet organizational requirements</td>
+</tr>
+<tr>
+<td><strong>Source</strong></td>
+<td>1. Identifying and engaging suppliers to provide best value for money</td>
+</tr>
+<tr>
+<td></td>
+<td>2. Ensuring procurement is conducted with probity and fairness</td>
+</tr>
+<tr>
+<td></td>
+<td>3. Determining the appropriate sourcing method (e.g., tendering, negotiation, or direct procurement)</td>
+</tr>
+<tr>
+<td><strong>Manage</strong></td>
+<td>1. Understanding and managing the rights and responsibilities of all parties involved</td>
+</tr>
+<tr>
+<td></td>
+<td>2. Ensuring ongoing supplier relationship management after contract signing</td>
+</tr>
+<tr>
+<td></td>
+<td>3. Delivering the best outcomes for the organization through effective contract management and continuous monitoring</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quality-management-week-6">Quality Management (week 6)</h2>
+<p><strong>Cost of Software Quality Management</strong></p>
+<p><strong>Conformance</strong> : Delivering products that meet requirements and are fit for purpose.</p>
+<p><strong>Nonconformance</strong> :Refers to taking responsibility for failures or not meeting quality expectation</p>
+<p><strong>Quality Management Processes</strong>: 1. PerformingQuality Assurance 2. Quality Control 3. Performing Quality Control</p>
+<p><strong>Quality Assurance</strong></p>
+<p>Verification and Validation</p>
+<p><strong>Verification</strong>: Ensuring you are building the system right (the right way).<br>
+<strong>Validation</strong>: Ensuring that you are building the right system (to meet stakeholder needs).</p>
+<p>Quality Assurance –Types of Testing</p>
+<p><strong>Unit Test</strong></p>
+<ul>
+<li>Used to test each individual component (often a program) to ensure it is defect-free.</li>
+<li>Performed before commencing integration testing.</li>
+</ul>
+<p><strong>Integration Testing</strong></p>
+<ul>
+<li>Between unit testing and system testing, esures that subset(s) of the overall system work together correctly.</li>
+</ul>
+<p><strong>System Testing</strong></p>
+<ul>
+<li>Tests the entire system as one entity. Ensures that the entire system is working correctly.</li>
+</ul>
+<p><strong>User Acceptance Testing</strong></p>
+<ul>
+<li>Testing performed by end users prior to accepting the delivered system.</li>
+</ul>
+<p>Quality Assurance -Software Standards and Systems</p>
+<p>Advantages of standards</p>
+<ul>
+<li>Provide a framework around which the quality assurance process may be implemented.
+-Customers sometimes require a particular quality standard/level when choosing a software vendor.</li>
+</ul>
+<p>Disadvantages of standards</p>
+<ul>
+<li>Involve too much bureaucratic form filling.</li>
+</ul>
+<p>Quality Assurance -Capability Maturity Model Integration (CMMI)</p>
+<p>Describes an approach for software companies to move from an ad-hoc, immature process to a mature developed process.Organizations are characterised being at a Level from 1-5 based on the processes they follow.</p>
+<img src="./image.png" alt="alt text" style="width:70%;">
+<img src="./image-1.png" alt="alt text" style="width:70%;">
+<p><strong>Quality planning</strong></p>
+<p>Incorporating quality standards into project design</p>
+<p>Product Overview  Product Plan  Quality Goals  Process Description Document and Coding Standards Risks and Risk Management</p>
+<p><strong>Quality Control and Monitoring</strong></p>
+<p>Involves monitoring the software development process to ensure that the quality assurance procedures and standards specified in the Software Quality Plan are being followed.</p>
+<p>Three common types of reviews (there are also other types of reviews): 1. Technical Reviews 2. Business Reviews 3. Management Reviews</p>
+<p><strong>Technical Reviews</strong>
+Reviews of artefacts is performed by peers in the development team but the author/s are involved.</p>
+<p><strong>Business Reviews</strong>
+The goal of a business review is to ensure that the IT solution provides the functionality specified in the project scope and requirements document.</p>
+<p><strong>Management Reviews</strong>
+Compares the project’s actual progress against a baseline project plan. <strong>Project Manager</strong> is responsible for presenting the project progress and providing a clear picture of the current status. May involve reviewing if the project meets the scope, schedule, budget and quality objectives.</p>
+<p><strong>Agile Centric Software Quality Management</strong></p>
+<p><strong>Test Driven Development (TDD)</strong></p>
+<ol>
+<li>You are not allowed to write any production code unless it is to make a failing unit test pass.</li>
+<li>You are not allowed to write any more of a unit test than is sufficient to fail; and compilation failures are failures.</li>
+<li>You are not allowed to write any more production code than is sufficient to pass the one failing unit test.</li>
+</ol>
+<p><strong>Acceptance-Test Driven Development QA Practices</strong></p>
+<p><strong>Stakeholders</strong> are first engaged to collaboratively discusses acceptance criteria, with stakeholders and team members providing input on what to test before any code is written.</p>
+<p>Tests are then written to evaluate these specifications, and only then writing the actual code to implement that feature.</p>
+<p><strong>Behavior-Test Driven Development QA Practices</strong></p>
+<p>It focuses on defining the behavior of software through conversation and concrete examples and writing specifications in clear and plain language.</p>
+<p>CI / CD
+meets the first principle of the Agile Manifesto: “Our highest priority is to satisfy the customer through early and continuous delivery of valuable software”.</p>
+<p>Continuous integration requires that every time somebody commits any change, the entire application is built and a comprehensive set of automated tests is run against it.</p>
+<h2 id="risk-analysisweek-3">Risk analysis(week 3)</h2>
+<p><strong>Risk Analysis - Qualitative</strong>
+risk probability (P)  risk impact (I)
+$$
+\text{Risk exposure} = P \times I
+$$</p>
+<p><strong>Risk Assessment - Quantitative</strong> Quantitative approaches include <strong>mathematical and statistical techniques</strong></p>
+<p><strong>Risk Management In Agile</strong>
+<strong>Plan</strong>: Risk Registers can be documented in a <strong>Risk Register</strong></p>
+<p><strong>Identify</strong>: Risk assessment workshops conducted by Product Owner to identify areas. Risks are added as <strong>user stories</strong> and <strong>prioritized in Product Backlog</strong></p>
+<p><strong>Analyse and Assess (Qualitative and Quantitative)</strong>:
+Team members analyses/assess and plan these risks during sprint planning. They can add new risks as they discover</p>
+<p><strong>Respond (Action)</strong>: Mitigation strategies defined for risk items and completed within sprint.</p>
+<p><strong>Monitor and Control</strong>: Product Owners receive regular updates on risk register. Scrum master monitors risks in daily stand ups</p>
+<h2 id="configuration-management-week-8">Configuration Management (Week 8)</h2>
+<p><strong>A Software Configuration is</strong>: 1. The total of all the artefacts. 2. The current state of all the artefacts 3. The dependencies between all the artefacts.</p>
+<p><strong>The aim of configuration management</strong> is to manage change properly without losing overall consistency through: 1. Establishing processes 2. Setting up repositories 3. Using other appropriate tools and techniques</p>
+<h3 id="cmconfiguration-management">CM(Configuration Management)</h3>
+<p>Configuration Management aims: 1. To identidy all items that collectively will make up the configuration. 2. To manage changes to one or more of these items so that the collection remains consistent. 3. To manage different verisons of the product. 4. To assure software quality as the configuration evolves over time.</p>
+<img src="./image-2.png" alt="alt text" style="width:40%;">
+
+</body>
+</html>

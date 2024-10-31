@@ -44,3 +44,44 @@ Key *hyperparameters* in convolution
 
 Max pooling helps reduce the spatial dimensions (height and width) of the feature maps while keeping the most important information.
 
+- Maxpooling takes an $m \times m$ patch (window) from the input feature map and selects the **maximum** value from that patch.
+![alt text](image-9.png)
+
+- Forward pass records maximising element, which is then used in the backward pass during back-propagation
+
+**Convolution + Max Pooling Achieves Translation Invariance**
+
+If the input image is shifted slightly, the network can still recognize the same feature
+
+Consider shift input image:
+- exact same kernels will activate, with same responses
+- max-pooling over the kernel outputs gives same output
+- size of max-pooling patch limits the extent of invariance
+
+**Can include padding around input boundaries**
+
+## Recurrent Neural Networks, Attention, and the Transformer
+
+### Recurrent Netwoks
+**Recurrent Neural Nets(RNNS)**
+RNN creats networks dynamically, based on input sequence.
+- Given sequence of inputs $x^{(1)},x^{(2)},\ldots,x^{(t)}$
+- Process each symbol from left to right, to form a sequence of hidden state $h^{(t)}$
+- Each $h^{(t)}$ encodes all inputs up to $t$
+
+![alt text](image-10.png)
+
+**Long Short-Term Memory**
+- LSTM introduces state self-loop, based on copying
+    - Takes copy of previous state, scales by sigmoid forget gate
+- Gradient magnitude now maintained
+    - Can handle 100+ distance phenimena (vs 5-19 for RNN)
+
+### Transformers
+RNNs over long sequences not to good at representing proprties of the full sequence
+
+**Attention** averages over hidden sequence
+- Avoids bottleneck, and uncovers meaningful stucture
+
+**Self-Atention**
+- **Transformers** use attention as means of representing sequences directly, instead of RNN.

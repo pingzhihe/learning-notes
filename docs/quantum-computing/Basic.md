@@ -154,10 +154,105 @@ where $H$ is the **Hamiltonian** of the system.
 Density matrix or density operator ($\rho$) is an alternative formulation for state vectors.
 - The trace of a density matrix $tr(\rho) = 1$.
 
-The evolution of a closed quantum system is described by a *unitary transformation*.That is, the state $\rho$ of the system at time $t_1$ is related to the state $rho'$ of the system at time $t_2$ by a unitary operator $U$ which depends only on the time $t_1$ and $t_2$
+The evolution of a closed quantum system is described by a *unitary transformation*.That is, the state $\rho$ of the system at time $t_1$ is related to the state $\rho'$ of the system at time $t_2$ by a unitary operator $U$ which depends only on the time $t_1$ and $t_2$
 $$
 \rho' = U\rho U^{\dagger}
 $$
 
-A pure state satisfied $tr(\rho^2) = 1$, $\rho^2 = \rho$\
-For pure state: $\lambda = 1$ or $\lambda = 0$, $det(\rho) = \lambda_1 \lambda_2 = 0$   
+A pure state satisfied $Tr(\rho^2) = 1$\
+For a mixed state, $Tr(\rho^2) < 1$
+
+For pure state: rank = 1, $det(\rho) = \lambda_1 \lambda_2 = 0$   
+
+## **Calculation tricks**
+
+**Complex Conjugate of a matrix**
+$$
+A = \begin{bmatrix} 1+i & 2-3i \\ 4 & 5i\end{bmatrix} \quad 
+A^{\dagger} = \begin{bmatrix} 1- i & 4 \\ 2 + 3i & -5i\end{bmatrix}
+$$
+
+**Trace of a matrix**
+$$
+A = \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22}\end{bmatrix} \quad
+\text{tr}(A) = \sum_{i = 1}^3 a_{ii} = a_{11} + a_{22}
+$$
+**Transformation of complex number**
+
+Regular form:
+$$
+z=x+iy
+$$
+
+Polar Form:
+$$
+r = |z| = \sqrt{x^2 + y^2} \\[5pt]
+\theta =  arg(z) = tan^{-1} (\frac{y}{x}) \\[5pt]
+\bf{z = r(\cos{\theta} +  i \sin{\theta})} \quad \leftarrow \text{final form}
+$$
+Exponential Form:\
+Euler's formula : $e^{i \theta} = \cos{\theta} + i \sin{\theta}$
+
+Thus the exponential form:
+$$
+z = r e^{i \theta}
+$$
+**Matric multipliation**
+$$
+A = \begin{bmatrix} a & b \\ c & d\end{bmatrix} \quad B = \begin{bmatrix} e & f \\ g & h\end{bmatrix} \\[6pt]
+A \times B = \begin{bmatrix} a×e+b×g & a×f+b×h \\ c×e+d×g & c×f+d×h \end{bmatrix}
+$$
+
+**Some normal gate combination**
+$$
+X^2 = Y^2 = Z^2 = I \\
+H =  \frac{1}{\sqrt{2}}(X+Z)\\
+X = HZH \quad Z = HXH \quad -1Y = HYH \\
+S = T^2 \\  
+-1Y = XYX       
+$$ 
+
+## Embedding Data
+**Basis Embedding**
+$$
+b = (b_0, b_1, ..., b_{n-1})  \rightarrow |b_0, b_1, \ldots, b_{n-1}\rangle
+$$
+
+**Pros:**
+- Simple and intuitive: It directly maps binary data into quantum states, making it suitable for data that is inherently binary.
+
+**Cons:**
+- High resource consumption: If the input data is not binary, it needs to be converted before encoding. Each bit requires one qubit, leading to high resource consumption, especially for large datasets.
+
+**Angle Embedding**
+
+**Angle embedding** is suitable for floating-point data.
+
+It encodes each input value 𝑥 as a rotation around one of the axes (𝑥,𝑦,𝑧) on the Bloch sphere
+$$
+x \mapsto R_k(x) \lvert 0 \rangle = e^{-i \frac{x}{2} \sigma_k} \lvert 0 \rangle,
+$$
+
+**Pros:**
+- Fewer qubit requirements: Each feature can be encoded using a rotation gate, which saves qubit resources.
+- Ideal for continuous data: It works well for handling floating-point or other continuous data.
+
+**Cons:**
+- Non-unique mapping: Different data may be mapped to the same quantum state since the same rotation angle can result in identical quantum states.
+- Initial state limitation: If the initial state is $|0\rangle$, rotations around the z-axis have no effect, making them unusable for encoding in such cases.
+
+**Amplitude Embedding**
+Amplitude embedding encodes the values of an input array as the amplitudes of a quantum state. Specifically, the input $a = (a_0, a_1, ..., a_{2^n-1})$ is encoded as:
+$$
+|a\rangle = \sum_{i=0}^{2^n-1} a_i |i\rangle
+$$
+requiring that the amplitudes are normalized, i.e. $\|a_i\| = 1$.
+
+**Pros:**
+- Efficient qubit usage: It can represent a large amount of data in a single quantum state, particularly suitable for large-scale data where an exponential number of data points can be represented.
+- High representational capacity: It allows data to be embedded into high-dimensional quantum states, enabling quantum machine learning models to learn complex features in higher-dimensional space.
+
+**Cons:**
+- Normalization requirement: Input data must be normalized to ensure that all the squared amplitudes sum to 1, which can add computational complexity.
+
+- Complex circuit design: Implementing amplitude embedding requires complex multi-controlled rotations, making the circuit design and implementation more challenging.

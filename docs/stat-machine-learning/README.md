@@ -8,6 +8,8 @@
 
 [Perception, Neural network, CNN, RNN, Transformer](./ann.md)
 
+[Cross validation, experts learning, MAB](./cross-validation.md)
+
 [Multi Arm Bandit](./Multi-Armed-Bandits.md)
 
 [Bayesian Regression](./Bayesian.md)

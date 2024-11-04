@@ -29,6 +29,17 @@ Key *hyperparameters* in convolution
 - Stride: how far to "slide" pacth across input
 - Padding of input boundaries with zeros
 
+parameter calculation:
+
+Convolution layer: $\text{k height} \times \text{k width} \times \text{num of inputs} \times \text{num of kernels}$
+
+Output: $\frac{\text{input}- \text{kernel} + \text{padding} \times 2 } {\text{stride}} + 1$
+
+Maxpooling layer: Because the maxpooling extract the feature using functions like $\max$, it does not have parameters
+
+Output: $\frac{\text{input size}- \text{pool size} + \text{padding} \times 2 }{stride} + 1$
+
+
 ### Components of a CNN
 **Convolutional layers**
 - Complex input representations based on convolution operation

@@ -151,3 +151,4 @@ $V(s') \leftarrow Q^{\pi}(s', a')$
 - SARSA
     - SARSA learns the safe policy, mayve not that optimal.
     - SARSA receibes a higher average reward via training.
+

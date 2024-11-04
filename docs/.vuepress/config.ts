@@ -56,7 +56,10 @@ export default defineUserConfig({
           {text: 'Bais', link:'/stat-machine-learning/revision-2.md'},
           {text: 'SVM, Kernel Methods', link: '/stat-machine-learning/svm.md'},
           {text: 'Precepction and Artificial Neural Network', link:'/stat-machine-learning/ann.md'},
-          {text: "Cross validation, experts learning, MAB", link:'/stat-machine-learning/cross-validation.md'}
+          {text: "Cross validation, experts learning, MAB", link:'/stat-machine-learning/cross-validation.md'},
+          {text: "Bayesian inference", link:'/stat-machine-learning/Bayesian-inference.md'},
+          {text:'GMM-EM', link:'/stat-machine-learning/GMM-EM.md'},
+          {text: "final", link:'/stat-machine-learning/final-revision.md'}
         ],
       },
       {

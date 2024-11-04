@@ -92,6 +92,16 @@ $$
 s = b^* + \sum_{i=1}^{n} \lambda_{i}^{*} y_i x'_{i}x
 $$
 
+For lagrangian problem: 
+If $\lambda_i = 0$ : The sample  $x_i$ is does not impact the decision boundary.
+
+For lagrangian problem in **soft-margin SVM** the slack variable $\xi$:
+- if $\xi < 0$, which is theoretically impossible, as $\xi$ represent the deviation from the margin and is defined to be non-negative, i.e., $\xi \geq 0$
+- $\xi = 0$ : The variable is correctly classified and lies either outside the margin or exactly on the margin boundary.
+- $0 < \xi < 1$ : The sample lies **within the margin** but is still correctly classified.
+- $1 < \xi < 2$ : The sample is misclassified, but the distance to the hyperplane does not exceed the opponent's margin.
+- $\xi \geq 2$ : The sample is severely misclassified and is more than one margin width away from the hyperplane.
+
 ### Soft-margin SVM’s dual
 The function for Sofr-Margin is similar. The difference is the constraint of $\lambda$
 $$
@@ -117,3 +127,21 @@ $$
 $$
 k(u,v) = \exp(- \gamma \|u-v \|^2)
 $$
+
+### Kernel trick
+
+In machine learning, the **kernel trick** allows us to compute the inner product in a high-dimensional feature space without explicitly mapping data points to that space.
+
+For two data points $x_i$ and $x_j$ : 
+$$
+x_i = \begin{bmatrix} x_{i1} \\ x_{i2} \end{bmatrix}, \quad x_j = \begin{bmatrix} x_{j1} \\ x_{j2} \end{bmatrix}
+$$
+The polynomial kernel function defines an inner product in the original space as:
+$$
+K(x_i, x_j) = (x_i \cdot x_j + 1)^2
+$$
+Expanding the polynomial:
+$$
+K(x_i, x_j) = (x_{i1} x_{j1} + x_{i2} x_{j2} + 1)^2 = x_{i1}^2 x_{j1}^2 + x_{i2}^2 x_{j2}^2 + 2x_{i1} x_{j1} x_{i2} x_{j2} + 2x_{i1} x_{j1} + 2x_{i2} x_{j2} + 1
+$$
+This result is equivalent to the inner product in a higher-dimensional space without explicitly computing the high-dimensional mapping.

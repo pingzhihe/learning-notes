@@ -17,13 +17,25 @@ Goals states can be more than one
 - m: the **maximal** depth reached
 
 **Breadth First Search**
+Data structure: FIFO (Queue)
 
-Stategy: FIFO (Queue)
+*Breadth First Search* explores node level by level, and a queue (FIFO) allows nodes to be processed in the order that they are discovered, which ensures all nodes at a given depth are expanded before moving to the next level.
 
 
 **Depth first Search**
 
-Strategy: Stack
+Data structure: LIFO (Stack)
+
+*Depth FiRst Search* explores as deep as possible along each branch before backtracking, and a stack (LIFO) enables this by always processing the most recently discovered node that still has unexplored successors.
+
+
+**Uniform Cost Search**
+
+Data structure: Priority Queue
+
+*Uniform Cost Search* expands nodes based on t6he lowest cumulaitve cost, and a priority queue efficiently retrieves the node with the minimal cost at each step, allowing UCS for finding the optimal path.
+
+
 
 
 
@@ -54,6 +66,22 @@ $h^*(s)$ Actual optimal value from current state s to goal state
 
 consistent + goal aware $\rightarrow$ admissible\
 admissible $\rightarrow$ goal aware + safe
+
+**Optimality for A star search**
+- A star search without **re-open mechanism** requires both **consistent** and **admissible** to ensure finding an optimal path.
+- With re-open mechanism, it only requies admissible
+
+Example for a non-optimal solution by inconsistent but adimissble for A* search without re-open nodes.
+```
+     (8)
+      A
+     / \
++1  /   \ +3
+   /     \   
+  B ----- C ----- D
+(7)  +1  (0)  +6  (0)
+```
+[Reference: Why does A* with admissible non consistent heuristic find non optimal solution?](https://stackoverflow.com/questions/51684682/why-does-a-with-admissible-non-consistent-heuristic-find-non-optimal-solution)
 
 **Greedy best-first search**
 - Using priority queue expand node by h(s)
@@ -107,6 +135,22 @@ $h^{add}$
 
 - $h^{add}$ is not admissible, but is typically a lot more informed than $h^{max}$
 
+**Relaxed Plan Extraction $h^{ff}$**
+
+$\text{Open} := G \setminus s, \quad \text{Closed} := \emptyset, \quad \text{RPlan} := \emptyset$
+
+$\textbf{while} \; \text{Open} \neq \emptyset \; \textbf{do}$
+
+$\quad \text{select } g \in \text{Open}$
+
+$\quad \text{Open} := \text{Open} \setminus \{g\}, \quad \text{Closed} := \text{Closed} \cup \{g\}$
+
+$\quad \text{RPlan} := \text{RPlan} \cup \{ b_s(g) \} ; \text{Open} := \text{Open} \cup \left( \text{pre}_{b_s(g)} \setminus (s \cup \text{Closed}) \right)
+$
+
+$\textbf{return } \text{RPlan}$
+
+
 ## Markov Decision Process
 
 **The Bellman Equation**
@@ -123,8 +167,40 @@ $$
 $$
 (提取最优action)
 
+### The multi-armed bandit problem
+A mukti-armed bandit (also known as an N-armded bandit) is defined by a set of random variables $X_{i,k}$ where:
+- $1 \leq i \leq N$ such that $i$ is the arm of the bandit; and 
+- k the index of the play of arm $i$
 
-### Reinforcement Learning
+The idea is that a gambler iteratively plays rounds, obervaing the reward from the arm after each round, and can adjust their strategy each time. The aim is to **maximize the sum of the rewards** collected over all rounds.
+
+**$\epsilon$-greedy stragegy**
+- With probability $1-\epsilon$ wo choose the arm with maximum Q value $\argmax_a Q(a)$
+(**exploit**).
+- With brobability $\epsilon$ we choose a random arm with uniform probability (**explore**)
+
+![alt text](image-3.png)
+
+**Softmax strategy**
+$$
+\frac{e^{Q(s, a) / \tau}}{\sum_{b=1}^{n} e^{Q(s, b) / \tau}}
+$$
+**Softmax** is a probability matching strategy, which means that the probability of each action being chosen is dependent on its Q-value so far.
+
+**UCB1 (upper condifence bounds)**
+Using the UCB1 strategy, we select the next action using the following:
+$$
+\argmax_a \left( Q(a)+ \sqrt{\frac{2 \ln t}{N(a)}} \right )
+$$
+where $t$ is the number of rounds so far, and $N(a)$ is the number of times $a$ has been chosen in all previous arounds.
+- The left term encoueages exploitation: the Q-value is high for actions that have had a high reward
+- The right term encourages exploration: it is high for actions that have been explored less, that is, when $N(a)$ relative to other actions. As $t$ increases, if some actions have low $N(a)$, then the expression $\sqrt{\frac{2 \ln t}{N(a)}}$ is large compared to actions with higher $N(a)$
+
+![alt text](image-4.png)
+
+### Temporal-difference learning
+Model-free reinforcement learning is learning a policy directly from experience and rewards. Q-learning and SARSA are two model-free approaches.
+
 
 $$
 Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma  V(s') - Q(s, a)]
@@ -151,4 +227,3 @@ $V(s') \leftarrow Q^{\pi}(s', a')$
 - SARSA
     - SARSA learns the safe policy, mayve not that optimal.
     - SARSA receibes a higher average reward via training.
-

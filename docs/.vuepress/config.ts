@@ -77,6 +77,7 @@ export default defineUserConfig({
         collapsible: true,
         children: [
           {text: 'Revision', link: '/AI-planning/revision.md'},
+          {text: 'Revision-2', link:'AI-planning/revision-2.md'}
         ],
       }
     ],

@@ -77,8 +77,8 @@ export default defineUserConfig({
         collapsible: true,
         children: [
           {text: 'Classical planning', link: '/AI-planning/revision.md'},
-          {text: 'MDP and reinforcement learning', link:'/AI-planning/revision-3.md'},
-          {text: 'Game theory and final recap', link:'AI-planning/revision-2.md'}
+          {text: 'MDP and reinforcement learning', link:'/AI-planning/revision-2.md'},
+          {text: 'Game theory and final recap', link:'AI-planning/revision-3.md'}
         ],
       }
     ],

@@ -150,3 +150,10 @@ $
 
 $\textbf{return } \text{RPlan}$
 
+
+## Width-based search
+
+**novelty w(s)**
+
+
+

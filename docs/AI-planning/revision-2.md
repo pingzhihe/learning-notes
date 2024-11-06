@@ -1,16 +1,3 @@
-## Shape reward
-$$
-Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \underbrace{F(s, s')}_{\text{additional reward}} + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
-$$
-The purpose of the function is to given an additional reward $F(s, s')$ when any action transitions from state $s$ to $s'$. The function: $F$ providees **heuristic domain knowledge** to the problem that is typically manually programmed.
-
-**Potential based Reward Shaping**
-
-$$
-F(s,s') = \gamma \Phi(s') - \Phi(s)
-$$
-$\Phi(s)$ is the **potential** of state $s$.\
-**Important** :  discount factor $\gamma$ on $\Phi(s')$
 
 ## Game Theory
 **Normal Form Game** : for N players if they take actions at the same time.

@@ -47,7 +47,15 @@ where $t$ is the number of rounds so far, and $N(a)$ is the number of times $a$ 
 
 <img src="./image-4.png" alt="alt text" width="450">
 
+### Model-based vs model-free
+Value iteration is part of a class of solutions known as **model-based** techniques. This means that we need to know the model, in particular, we have access to $P_a(s'|s)$ and $r(s, a, s')$.
+
+*How can we calculate a policy if we don't know the transitions and rewards?* we **learn through experience** by trying actions and seeing what the result is, making this machine learning problem. We learn a **value function** or a **policy** directly.
+
+
 ## Temporal-difference learning
+
+
 Model-free reinforcement learning is learning a policy directly from experience and rewards. Q-learning and SARSA are two model-free approaches.
 
 
@@ -59,14 +67,12 @@ $$
 - $\gamma$: discount factor
 
 
-**Q-learning**
+**Q-learning: Off-policy temporal difference learning**
 
-Off policy:\
 $V(s') \leftarrow  \max{(Q(s', a'))}$
 
-**SARSA**
+**SARSA: On-policy temporal difference learning**
 
-On policy\
 $V(s') \leftarrow Q^{\pi}(s', a')$
 
 **Q-learning vs SARSA**
@@ -83,6 +89,8 @@ Q-learning is therefore "optimistic", in that when it updates, it assumes that i
 
 SARSA instead knows the action that it will execute next when it performs the update, so will learn on the action whether it is best or not.
 
+### On-policy vs. off-policy: Why do we have both?
+The main advantage of off-policy approaches is that they can use samples from sources other than their own policy. For example, off-policy agents can be given a set of episodes of behaviour from another agent, such as a human expert, and can learn a policy by demonstration. 
 
 ### n-step SARSA
 $$
@@ -178,4 +186,11 @@ $\max_{a'} Q(s', a')$  can be altered depand on the algorthm used.
 
 - A action only updates the weights corresponded to the features of the action.
 
-###
+## Monte Carlo Tree Search
+
+**Value updation for expectimax tree**
+$$
+V(t) = \max_{a' \in \{c, g\}} \sum_{t' \in \text{children}(t)} P_{a}(t' \mid t) \left[r(t, a', t') + \gamma V(s(t'))\right]
+$$
+
+<img src="./image-7.png" alt="alt text" width="450">

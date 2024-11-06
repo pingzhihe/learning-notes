@@ -17,21 +17,21 @@ Goals states can be more than one
 - m: the **maximal** depth reached
 
 **Breadth First Search**
-Data structure: FIFO (Queue)
+Data structure: *FIFO (Queue)*
 
 *Breadth First Search* explores node level by level, and a queue (FIFO) allows nodes to be processed in the order that they are discovered, which ensures all nodes at a given depth are expanded before moving to the next level.
 
 
 **Depth first Search**
 
-Data structure: LIFO (Stack)
+Data structure: *LIFO (Stack)*
 
 *Depth FiRst Search* explores as deep as possible along each branch before backtracking, and a stack (LIFO) enables this by always processing the most recently discovered node that still has unexplored successors.
 
 
 **Uniform Cost Search**
 
-Data structure: Priority Queue
+Data structure: *Priority Queue*
 
 *Uniform Cost Search* expands nodes based on t6he lowest cumulaitve cost, and a priority queue efficiently retrieves the node with the minimal cost at each step, allowing UCS for finding the optimal path.
 
@@ -89,6 +89,8 @@ Example for a non-optimal solution by inconsistent but adimissble for A* search 
 - Optimality: No
 
 ## STRIPS And Relaxation
+
+
 h+: The Optimal Delete Relaxation Heuristic
 
 Default STRIP model: s' = s + add(s) - del(s)\
@@ -118,7 +120,7 @@ $$
 
 <span style="color: orange;">
 
-$h^{add}$ 和 $h^{max}$：如果一个动作有多个precondition，则视为多个g
+$h^{add}$ 和 $h^{max}$：如果一个动作有多个precondition，则视为多个g：$|g| > 1$
 
 </span>
 
@@ -126,10 +128,13 @@ $h^{add}$ 和 $h^{max}$：如果一个动作有多个precondition，则视为多
 **Bellman-Ford Table**
 
 $h^{max}$
-![alt text](image.png)
+
+<img src="./image.png" alt="alt text" width="700">
+
 
 $h^{add}$
-![alt text](image-1.png)
+
+<img src="./image-1.png" alt="alt text" width="700">
 
 - $h^{max}$ is admissible, but is typically far too optimistic
 
@@ -137,19 +142,28 @@ $h^{add}$
 
 **Relaxed Plan Extraction $h^{ff}$**
 
-$\text{Open} := G \setminus s, \quad \text{Closed} := \emptyset, \quad \text{RPlan} := \emptyset$
+A heuristic function is called a **relaxed plan heuristic**, denoted $h^{FF}$, if, given a state $s$, it returns $\infty$ if no relaxed plan exists, and otherwise returns $\sum_{a \in RPlan} c(a)$ where $RPlan$ is the **action set returned** by relaxed plan extraction on a **closed well-founded best-supporter function** for $s$.
+- Plan set means no duplicate actions.
 
-$\textbf{while} \; \text{Open} \neq \emptyset \; \textbf{do}$
+<img src="./image-5.png" alt="alt text" width="500">
 
-$\quad \text{select } g \in \text{Open}$
+- $h^{FF}$ never over count sub plans due to $\text{RPlan} := \text{RPlan} \cup \{ b_s(g) \}$
+- $h^{FF}$  may be inadmissible, just like $h^{add}$, but for more subtle reasons.
+- In practice, $h^{FF}$ typically does not over-estimate $h^*$
 
-$\quad \text{Open} := \text{Open} \setminus \{g\}, \quad \text{Closed} := \text{Closed} \cup \{g\}$
+**For relaxed plan extraction to make sense, it requires a closed well-founded best-supporter function:**
 
-$\quad \text{RPlan} := \text{RPlan} \cup \{ b_s(g) \} ; \text{Open} := \text{Open} \cup \left( \text{pre}_{b_s(g)} \setminus (s \cup \text{Closed}) \right)
-$
+The $h^{max}$ supporter function:
+$$
+b^{\text{max}}_s(p) := \argmin_{a \in A, p \in \text{add}_a} c(a) + h^{\text{max}}(s, \text{pre}_a).
+$$
 
-$\textbf{return } \text{RPlan}$
+The $h^{add}$ supporter function:
+$$
+b^{\text{add}}_s(p) := \argmin_{a \in A, p \in \text{add}_a} c(a) + h^{\text{add}}(s, \text{pre}_a).
+$$
 
+**Proposition** : ($h^{FF}$ is Pessimistic and Agrees with $h^{*}$ on $\infty$). For all STRIPS planning tasks $\Pi$, $h^{FF} \geq h^{+}$ for all states, $h^{+}(s) = \infty$ if and only if $h^{FF}(s) = \infty$. There exists STRIPS planning tasks $\Pi$ and $s$ so that $h^{FF}(s) > h^{*}(s)$.
 
 ## Width-based search
 

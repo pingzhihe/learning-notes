@@ -18,9 +18,11 @@ A pure strategy can be treat as a mixed strategy: 100 \% probability for one act
 A strategy is weakly dominant if the utility received by the agent for playing strategy $s_i$ is greater than or equal to the utility received by that agent for playing $s^{'}_{i}$
 
 
-NASH EQUILIBRIA FOR PRISONER’S DILEMMA
+### **NASH EQUILIBRIA FOR PRISONER’S DILEMMA**
 
-![alt text](image-2.png)
+<img src="./image-2.png" alt="prisoner dilemma" style="width: 50%; height: auto;">
+
+
 - If player 2 choose Admit, player1 choose admit get greater reward: $-2 > -4$; If player 2 choose Deny, player 1 choose Admit receives greater reward. $0 > -1$
 - If player 1 choose Admit, player2 choose admit get greater reward: $-2 > -4$; If player 1 choose Dey, player 2 choose admit get greater reward. $0 > -1$
 
@@ -28,7 +30,7 @@ Nash Equilibrium occurs in a game when each player’s strategy maximizes their 
 
 **Nash's existence theorem**
 
-Nash proved that if mixed strategies (where a player chooses probabilities of using various pure strategies) are allowed, then every game with a finite number of players in which each player can choose from finitely many pure strategies has at least one Nash equilibrium, which might be a pure strategy for each player or might be a probability distribution over strategies for each player. [reference](https://en.wikipedia.org/wiki/Nash_equilibrium)
+Nash proved that if mixed strategies (where a player chooses probabilities of using various pure strategies) are allowed, then every game with a finite number of players in which each player can choose from finitely many pure strategies has at **least one Nash equilibrium**, which might be a pure strategy for each player or might be a probability distribution over strategies for each player. [reference](https://en.wikipedia.org/wiki/Nash_equilibrium)
 
 
 

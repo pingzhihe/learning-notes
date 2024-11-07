@@ -43,8 +43,8 @@ Data structure: *Priority Queue*
 |----------|-------|-------|-------|-------|-------|-------|
 | Complete | No    | Yes   | Yes   | Yes   | No    | Yes   |
 | Optimal  | No    | Yes*  | Yes*  | Yes   | No    | Yes   |
-| Time     | $∞$  | $b^d$ | $b^d$ | $b^d$ | $∞$   | $b^d$ |
-| Space    | $bd$  | $b^d$ | $bd$  | $b^d$ | $b$   | $b  d$|
+| Time     | $b^m$  | $b^d$ | $b^d$ | $b^d$ | $∞$   | $b^d$ |
+| Space    | $bm$  | $b^d$ | $bd$  | $b^d$ | $b$   | $bd$|
 
 A search algorithm is considered complete if it **guarantees to find a solution**, if one exists.
 
@@ -89,6 +89,7 @@ Example for a non-optimal solution by inconsistent but adimissble for A* search 
 - Optimality: No
 
 ## STRIPS And Relaxation
+A STRIPS problem P = $\langle F, O, I, G \rangle$ : **Propositions, Initial state, Goal, Actions.**
 
 
 h+: The Optimal Delete Relaxation Heuristic

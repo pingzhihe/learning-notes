@@ -55,7 +55,7 @@
     * 默认是私有的 可加`pub`关键字使其公有  
 在src/lib.rs 中定义一个模块:
 
-```
+```rust
 mod front_of_house {
     // path: src/lib.rs
     // 子moudle
@@ -92,7 +92,7 @@ mod front_of_house {
 * 父级模块不能访问子模块的私有条目
 * 子模块可以访问父模块的私有条目
 * 使用`pub`关键字可以使条目变为公有
-```
+```rust
 mod front_of_house {
 
     pub mod hosting {
@@ -111,7 +111,7 @@ pub fn eat_at_restaurant() {
 
 ### super 关键字:
 * super: 用来访问父级模块路径中的内容, 类似文件系统中的`..`
-```
+```rust
 fn serve_order() {}
 
 mod back_of_house {
@@ -138,7 +138,7 @@ mod back_of_house {
 ## use 关键字
 * 可以使用use 关键字将路径引入作用域内
     * 仍遵循私有性规则
-```
+```rust
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -154,13 +154,13 @@ pub fn eat_at_restaurant() {
 
 ```
 * use 也可以使用相对路径
-```
+```rust
 use front_of_house::hosting;
 ```
 我们一般引入的是函数的父级模块, 这样就可以知道调用的函数是属于哪个模块的
 
 * struct, enum, 其他:  指定完整路径(指定到本身)
-```
+```rust
 use std::collections::HashMap;
 fn main() {
     let mut map = HashMap::new();
@@ -169,7 +169,7 @@ fn main() {
 }
 ```
 同名的struct或者enum, 指定到父级
-```
+```rust
 use std::fmt;
 use std::io;
 
@@ -180,7 +180,7 @@ fn main {}
 ```
 ### as 关键字
 * as 关键字可以为引入的路径设置本地的别名
-```
+```rust
 use std::fmt::Result;
 use std::io::Result as IoResult;
 
@@ -192,7 +192,7 @@ fn main {}
 
 ### 使用pub use 重新导出名称
 * 使用use 将路径(名称)导入作用域后, 该名称在次作用域是私有的
-```
+```rust
 pub use front_of_house::hosting;
 ```
 在外部使用hosting function  
@@ -215,11 +215,11 @@ pub use front_of_house::hosting;
 *  可以使用嵌套路径在同一行内将上述条目引入:
     * 路径相同的部分::{路径不同的部分}
 
-```
+```rust
 use std::{cmp::Ordering, io};
 ```
 * 也可以使用self, super
-```
+```rust
 use std::io::{self, Write};
 ```
 
@@ -238,7 +238,7 @@ use std::io::{self, Write};
     * 模块树的结构不会发生变化
     * 例如: `mod front_of_house;`
 * 随着模块逐渐增大, 可以将模块内容移动到其他文件中
-```
+```rust
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -247,7 +247,7 @@ mod front_of_house {
 ```
 这边如果是`mod front_of_house;` 会从front_of_house.rs 文件中加载模块内容  
 `lib.rs`:  
-```
+```rust
 mod front_of_house;
 pub use crate:: front_of_house::hosting;
 
@@ -258,7 +258,7 @@ pub fn eat_at_restaurant() {
 }
 ```
 `front_of_house.rs`:
-```
+```rust
 pub mod hosting {
     pub fn add_to_waitlist() {}
 }

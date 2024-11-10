@@ -1,6 +1,6 @@
 # 泛型， Trait
 ## 提取函数消除重复
-```Rust
+```rust
 fn largest(list: &[i32]) -> i32 {
     let mut largest = list[0];
     for &number in list {
@@ -40,7 +40,7 @@ fn main() {
 * 返回值类型  
 会在后面详细解释
 ## Struct中定义中使用泛型
-```
+```rust
 struct Point<T, U> {
     x: T,
     y: U,
@@ -57,7 +57,7 @@ T 和 U 代表了Point里x和y可以是不同的类型
 ## 枚举定义中使用泛型
 * 可以让枚举的变体持有泛型数据类型
     * 例如 `Option<T>`,`Result<T, E>`
-```
+```rust
 enum Option<T> {
     Some(T),
     None,
@@ -69,7 +69,7 @@ enum Result<T, E> {
 ```
 ## 方法定义中使用泛型
 * 为struct和enum定义方法的时候, 可以在定义中使用泛型
-```
+```rust
 struct Point<T> {
     x: T,
     y: T,
@@ -103,7 +103,7 @@ impl<T> Point<T> {
     * 只有方法签名, 没有具体实现
     * trait 可以有多个方法: 每个方法签名占一行,以; 结尾
     * 实现该trait的类型必须提供具体的方法实现
-```
+```rust
 pub trait Summary {
     fn summarize(&self) -> String;
 }
@@ -114,7 +114,7 @@ pub trait Summary {
 * 在impl 的块内, 需要对trait方法签名提供具体的实现  
 
 lib.rs:
-```
+```rust
 pub trait Summary {
     fn summarize(&self) -> String;
 }
@@ -145,7 +145,7 @@ impl Summary for Tweet {
 }
 ```
 main.rs:
-```
+```rust
 use _generics::Summary;
 use _generics::Tweet;
 
@@ -178,13 +178,13 @@ fn main() {
 
 ## trait作为参数
 * 语法: `impl Trait`
-```
+```rust
 pub fn notify(item: impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
 ```
 * Trait bound 语法: `Trait + Trait` 课用于更复杂的情况
-```
+```rust
 pub fn notify<T: Summary>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }
@@ -193,13 +193,13 @@ pub fn notify<T: Summary>(item: &T) {
 * 使用+指定多个trait bound
 * trait bound 使用where子句
     * 在方法签名后指定where子句
-```
+```rust
 pub fn notify<T: Summary + Display, U: Clone + Debug>(a: T, b: U)-> String {
     format!("Breaking news! {}", a.summarize())
 }
 ```
 等用于:
-```
+```rust
 pub fn notify2<T, U>(a: T, b: U)-> String 
 where T: Summary + Display,
         U: Clone + Debug,
@@ -210,7 +210,7 @@ where T: Summary + Display,
 ```
 ## 实现Trait作为返回类型
 * 语法: `-> impl Trait`
-```
+```rust
 pub fn notify3(s: &str) -> impl Summary{
     NewsArticle{
         headline: String::from("Rust is the best language"),
@@ -225,7 +225,7 @@ pub fn notify3(s: &str) -> impl Summary{
 
 ## 使用trait bound 的例子
 修复以下代码：
-```
+```rust
 fn largest<T>(list: &[T]) -> T{
     let mut largest = list[0];
     for &item in list.iter(){
@@ -247,7 +247,7 @@ fn main() {
 * 解决: 使用trait bound
     * T必须实现`PartialOrd` trait
     * T必须实现`Copy` trait
-```
+```rust
 fn largest<T>(list: &[T]) -> T
 where T: PartialOrd + Copy
 {
@@ -262,7 +262,7 @@ where T: PartialOrd + Copy
 ```
 ## 使用trait bound 有条件的实现方法
 * 在使用泛型类型参数的impl块上使用trait bound, 我们可以有条件的只为那些实现了特定trait的类型实现方法
-```
+```rust
 struct Pair<T> {
     x: T,
     y: T,

@@ -36,6 +36,9 @@ export default defineUserConfig({
           {text: '5.Package-management', link: '/rust-learning/Package-management.md'},
           {text: '6.Vector', link: '/rust-learning/Vector.md'},
           {text: '7.Error handle', link: '/rust-learning/Error-handle.md'},
+          {text: '8.Trait  泛型', link: '/rust-learning/Trait.md'},
+          {text: '9.Life time', link: '/rust-learning/Life-time.md'},
+          {text: '10.Test', link: '/rust-learning/Test.md'},
         ],
       },
       {

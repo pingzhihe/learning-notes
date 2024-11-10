@@ -42,7 +42,7 @@
 * 为了获取带有调试信息的回溯, 必须启用调试符号（不带 --release）编译程序
 
 ## `Result<T, E>` 与处理 可恢复错误(recoverable error)
-```
+```rust
 enum Result<T, E> {
     Ok(T),
     Err(E),
@@ -54,7 +54,7 @@ E: 操作失败情况下, Err 变体返回的错误类型
 ## 处理 Result
 
 ### 匹配不同的错误
-```
+```rust
 use std::fs::File;
 use std::io::ErrorKind;
 
@@ -79,7 +79,7 @@ fn main() {
 * 闭包(closure)。`Result<T,E>` 有很多方法:
     * 他们接收闭包作为参数
     * 使用match 实现
-```
+```rust
 use std::fs::File;
 use std::io::ErrorKind;
 
@@ -102,7 +102,7 @@ fn main() {
 ## unwrap
 * unwrap: match 表达式的一个快捷方法:
     * 如果Result 的值是Ok, unwrap 会返回Ok 中的值
-```
+```rust
 let f = File ::open("hello.txt");
 let f = match f {
     Ok(file) => file,
@@ -112,21 +112,21 @@ let f = match f {
 };
 ```
 和
-```
+```rust
 let f = File ::open("hello.txt").unwrap();
 ```
 是一样的
 
 ## expect 
 * expect: 与unwrap 类似, 但是可以指定错误信息
-```
+```rust
 let f = File ::open("hello.txt").expect("Failed to open hello.txt");
 ```
 
 ## 传播错误
 * 在函数中传播错误
 * 将错误返回给调用者
-```
+```rust
 use std::fs::File;
 use std::io;
 use std::io::Read;
@@ -157,7 +157,7 @@ fn main() {
 
 ## ? 运算符
 * ? 运算符: 传播错误的一种快捷方式
-```
+```rust
 fn read_username_from_file() -> Result<String, io::Error> {
     let mut f = File::open("hello.txt")?;
     let mut s= String::new();
@@ -184,7 +184,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
     * 只要每个错误类型实现了转换为返回类型所定义的错误类型的from 函数
 
 ## ?运算符的链式调用
-```
+```rust
 fn read_username_from_file() -> Result<String, io::Error> {
     let mut s= String::new();
     File::open("hello.txt")?.read_to_string(&mut s)?;
@@ -194,7 +194,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
 这三行的效果和上文一样, 但是更简洁
 
 ## ? 运算符只能用于返回Result的函数
-```
+```rust
 use std::fs::File;
 use std::error::Error;
 
@@ -220,7 +220,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 ## 有时你比编译器掌握更多信息
 * 你可以知道Result 就是OK: unwrap
-```
+```rust
 use std::net::IpAddr;
 fn main(){
     let home: IpAddr = "170.0.0.1".parse().unwrap();

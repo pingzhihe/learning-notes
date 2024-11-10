@@ -15,3 +15,8 @@
 [7.Error handle](./Error-handle.md)
 
 [8.Trait  泛型](./Trait.md)
+
+[9.Life time 生命周期](./Life-time.md)
+
+[10.Test](./Test.md)
+

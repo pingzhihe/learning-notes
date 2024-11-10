@@ -21,7 +21,7 @@ let s = String::from("hello");
 ```
 "::" 表示from是String类型下的一个函数
 
-```
+```rust
 let mut s = String::from("Hello");
 s.push_str(", world!");
 println!("{}", s);
@@ -43,7 +43,7 @@ Rust 采用了不同的方式；对于某个值来说，当拥有它的变量走
 * 当变量离开作用域时, Rust 会自动调用drop函数, 并将变量使用的heap内存释放。
 ## 变量与数据交互的方式：移动(Move)
 多个变量可以与同一个数据使用一种独特的方式来交互
-```
+```rust
 let x =5;
 let y = x;
 ```
@@ -53,7 +53,7 @@ string类型，是一个三部分的值：指向存储在heap中的内容的指�
 
 <img src="./images/str-1.png" alt="String" width="300">
 
-```
+```rust
 let s1 = String::from("Hello");
 let s2 = s1;
 ```
@@ -71,7 +71,7 @@ double free bug！
   - 当s1离开作用域时，rust不需要释放任何东西。
 
 这里会报错，因为s1已经失效了，rust不允许使用失效的变量。
-```
+```rust
 let s1 = String::from("Hello");
 let s2 = s1;
 println!("{}, world!", s1);
@@ -79,7 +79,7 @@ println!("{}, world!", s1);
 Rust 让s1失效的操作叫做：移动(move)。
 Rust不会自动创建数据的深拷贝
 修复方法：
-```
+```rust
 let s1 = String::from("Hello");
 let s2 = s1.clone();
 println!("{},{}", s1, s2);
@@ -104,7 +104,7 @@ Copy trait, 可以用于像整数这样可以完全存放在stack上的类型。
         * (i32, String) 不是。
 
 ## 所有权和函数
-```
+```rust
 fn main() {
     let s = String::from("hello world");
     take_ownership(s);
@@ -139,7 +139,7 @@ fn make_copy(some_integer: i32){
 
 ## 引用与借用
 
-```
+```rust
 fn main() {
     let s1 = String::from("hello");
     let len = calculate_length(&s1);
@@ -151,7 +151,7 @@ fn calculate_length(s: &String) -> usize {
     s.len()
 }
 
-```
+```rust
 这里参数的类型是&String, 称为引用(reference)。  
 <img src="./images/ref.png" alt="String" width="300">  
 这里s就是s1的引用。
@@ -159,7 +159,7 @@ fn calculate_length(s: &String) -> usize {
 我们把引用作为函数参数叫做借用(borrowing)。
 和变量一样,引用默认是不可变的。  
 ## 可变引用
-```
+```rust
 fn main() {
     let mut s1 = String::from("hello");
     let len = calculate_length(&mut s1);
@@ -174,7 +174,7 @@ fn calculate_length(s: &mut String) -> usize {
 ```
 可变引用有一个重要的限制：在特定作用域内,对于某一块数据,只能有**一个**可变的引用。
 这里就会报错
-```
+```rust
 fn main() {
     let mut s = String::from("hello");
     let s1 = &mut s;
@@ -189,7 +189,7 @@ fn main() {
     * 至少有一个指针被用来写入数据
     * 没有使用任何机制来同步对数据的访问
 * 可以通过创建新的作用域来允许非同时地创建多个可变引用
-```
+```rust
 fn main() {
     let mut s = String::from("hello");
     {

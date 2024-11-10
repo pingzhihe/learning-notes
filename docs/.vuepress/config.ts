@@ -27,9 +27,13 @@ export default defineUserConfig({
         link: '/rust-learning/',
         collapsible: true,
         children: [
-          {text: 'Number Types',  // display on the side bar
+          {text: '1.Number Types',  // display on the side bar
             link: '/rust-learning/Num-type.md',
           },
+          {text: '2.Ownership', link: '/rust-learning/Ownership.md'},
+          {text: '3.Struct', link: '/rust-learning/Struct.md'},
+          {text: '4.Enum', link: '/rust-learning/Emun.md'},
+          
         ],
       },
       {

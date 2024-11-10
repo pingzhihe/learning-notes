@@ -33,7 +33,9 @@ export default defineUserConfig({
           {text: '2.Ownership', link: '/rust-learning/Ownership.md'},
           {text: '3.Struct', link: '/rust-learning/Struct.md'},
           {text: '4.Enum', link: '/rust-learning/Emun.md'},
-          
+          {text: '5.Package-management', link: '/rust-learning/Package-management.md'},
+          {text: '6.Vector', link: '/rust-learning/Vector.md'},
+          {text: '7.Error handle', link: '/rust-learning/Error-handle.md'},
         ],
       },
       {

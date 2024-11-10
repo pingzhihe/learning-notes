@@ -20,3 +20,6 @@
 
 [10.Test](./Test.md)
 
+[11.Minigrep](./Minigrep.md)
+
+[12.Closure 闭包](./Closure.md)

@@ -23,3 +23,7 @@
 [11.Minigrep](./Minigrep.md)
 
 [12.Closure 闭包](./Closure.md)
+
+[13.Smart pointer 智能指针](./Smart-pointer.md)
+
+[14.Fearless concurrency 无畏并发](./Fearless-concurrency.md)

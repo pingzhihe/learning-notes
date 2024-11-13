@@ -23,6 +23,13 @@ export default defineUserConfig({
         ],
       },
       {
+        text: "Cpp",
+        link: '/CPP/',
+        collapsible: true,
+        children: [
+        ],
+      },
+      {
         text: 'Rust Learning',
         link: '/rust-learning/',
         collapsible: true,
@@ -41,7 +48,8 @@ export default defineUserConfig({
           {text: '10.Test', link: '/rust-learning/Test.md'},
           {text: '11.Minigrep', link: '/rust-learning/Minigrep.md'},
           {text: '12.Closure 闭包', link: '/rust-learning/Closure.md'},
-          
+          {text: '13.Smart pointer 智能指针', link: '/rust-learning/Smart-pointer.md'}, 
+          {text: '14.Fearless concurrency 无畏并发', link: '/rust-learning/Fearless-concurrency.md'},
         ],
       },
       {

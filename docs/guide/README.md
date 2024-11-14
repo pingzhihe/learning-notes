@@ -12,3 +12,11 @@ npm run deploy
 ```bash
 npm run docs:dev
 ```
+
+## Commands
+
+[Commands](./commands.md)
+
+## Shortkeys
+
+[Shortkeys](./shortkeys.md)

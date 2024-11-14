@@ -20,6 +20,7 @@ export default defineUserConfig({
         collapsible: true,
         children: [
           {text: 'Shortkeys', link: '/guide/shortkeys.md'},
+          {text: 'Commands', link: '/guide/commands.md'},
         ],
       },
       {

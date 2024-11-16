@@ -28,6 +28,7 @@ export default defineUserConfig({
         link: '/CPP/',
         collapsible: true,
         children: [
+          {text: 'Basic', link: '/CPP/basic.md'},
         ],
       },
       {

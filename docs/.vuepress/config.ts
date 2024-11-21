@@ -118,4 +118,19 @@ export default defineUserConfig({
     }),
     markdownMathPlugin(),
   ],
+  
+  head: [
+    ['style', {}, `
+      :root {
+        --content-width: 950px !important;     /* 调整内容区域最大宽度 */
+      }
+      
+      /* 调整主要内容区域的宽度和边距 */
+      .theme-default-content {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+      }
+    `]
+  ],
 })

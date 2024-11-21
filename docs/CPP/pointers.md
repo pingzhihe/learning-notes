@@ -1,6 +1,6 @@
 # Compound Types: References and Pointers
 
-## Value categories (lvalues and rvalues)
+## 1.Value categories (lvalues and rvalues)
 The **value category** of an expression (or subexpression) indicates whether an expression resolves to a value, a function, or an object of some kind.
 - Prior to C++11, there were only two possible value categories: `lvalue` and `rvalue`.
 - In C++11, three additional value categories (`glvalue`, `prvalue`, and `xvalue`) were added to support a new feature called `move semantics`.

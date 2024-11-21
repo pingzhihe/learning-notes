@@ -29,6 +29,8 @@ export default defineUserConfig({
         collapsible: true,
         children: [
           {text: 'Basic', link: '/CPP/basic.md'},
+          {text: 'Scope, Duration, and Linkage', link: '/CPP/scope.md'},
+          {text: 'Pointers(1)', link: '/CPP/pointers.md'},
         ],
       },
       {

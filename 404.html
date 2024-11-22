@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.18" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <style>
+      :root {
+        --content-width: 950px !important;     /* 调整内容区域最大宽度 */
+      }
+      
+      /* 调整主要内容区域的宽度和边距 */
+      .theme-default-content {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+      }
+    </style><title>Learning Notes</title><meta name="description" content="A note taking web site">
+    <link rel="preload" href="/learning-notes/assets/style-CeqOocvs.css" as="style"><link rel="stylesheet" href="/learning-notes/assets/style-CeqOocvs.css">
+    <link rel="modulepreload" href="/learning-notes/assets/app-DsOgR8nk.js"><link rel="modulepreload" href="/learning-notes/assets/404.html-uulsbaPi.js">
+    <link rel="prefetch" href="/learning-notes/assets/index.html-DiukWnyu.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-D7rYKWbh.js" as="script"><link rel="prefetch" href="/learning-notes/assets/revision-2.html-C1P0zbGW.js" as="script"><link rel="prefetch" href="/learning-notes/assets/revision-3.html-H5WRivyx.js" as="script"><link rel="prefetch" href="/learning-notes/assets/revision.html-j7uDJZWI.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Enums-Structs.html-B5x4Jgi6.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-CQ8rKHO-.js" as="script"><link rel="prefetch" href="/learning-notes/assets/basic.html-W8JFeAA1.js" as="script"><link rel="prefetch" href="/learning-notes/assets/pointers-2.html-CMWGu_On.js" as="script"><link rel="prefetch" href="/learning-notes/assets/pointers.html-BbZIyEFa.js" as="script"><link rel="prefetch" href="/learning-notes/assets/scope.html-CNsZl0YI.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-DncVXc6Z.js" as="script"><link rel="prefetch" href="/learning-notes/assets/lec.html-Cj2eamcj.js" as="script"><link rel="prefetch" href="/learning-notes/assets/revision.html-D9K8lSGg.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-Dj_jYuAM.js" as="script"><link rel="prefetch" href="/learning-notes/assets/commands.html-B2Nlgx6s.js" as="script"><link rel="prefetch" href="/learning-notes/assets/shortkeys.html-Bw1WT07S.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Basic.html-BQqgykgV.js" as="script"><link rel="prefetch" href="/learning-notes/assets/QAOA.html-CXcNTDWT.js" as="script"><link rel="prefetch" href="/learning-notes/assets/QFE.html-uZLoELzv.js" as="script"><link rel="prefetch" href="/learning-notes/assets/QFT.html-nC7_EMuw.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-CycaJi4z.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Teleportation.html-B5xiFHhT.js" as="script"><link rel="prefetch" href="/learning-notes/assets/shor's algotighm.html-CFkOzbw3.js" as="script"><link rel="prefetch" href="/learning-notes/assets/week11.html-BklFsnpI.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Closure.html-Da2fu2X7.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Emun.html-7GwBy-Ku.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Error-handle.html-Dn0oJ09B.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Fearless-concurrency.html-BMfS4r6X.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Life-time.html-O1LlmtO2.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Minigrep.html-CtAynLVu.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Num-type.html-DmsPYGp0.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Ownership.html-BQpY6Wb3.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Package-management.html-Btp44fEp.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-ColOM-Zh.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Smart-pointer.html-CGG3TVYS.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Struct.html-QbgWDSwd.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Test.html-18qFlW93.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Trait.html-BqHMDhMb.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Vector.html-BsWTR8k7.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Bayesian-inference.html-Cx9f9JxL.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Bayesian.html-DKqLsxtv.js" as="script"><link rel="prefetch" href="/learning-notes/assets/GMM-EM.html-jt6UK2iJ.js" as="script"><link rel="prefetch" href="/learning-notes/assets/Multi-Armed-Bandits.html-CCn_WnvB.js" as="script"><link rel="prefetch" href="/learning-notes/assets/index.html-BYPcUCdL.js" as="script"><link rel="prefetch" href="/learning-notes/assets/ann.html-_F-60DzV.js" as="script"><link rel="prefetch" href="/learning-notes/assets/cross-validation.html-BDU9hBjG.js" as="script"><link rel="prefetch" href="/learning-notes/assets/final-revision.html-BEFIYDhE.js" as="script"><link rel="prefetch" href="/learning-notes/assets/gmm-em.html-C-2OJUhS.js" as="script"><link rel="prefetch" href="/learning-notes/assets/revision-2.html-Cmf9Gy4X.js" as="script"><link rel="prefetch" href="/learning-notes/assets/revision.html-hB2XmEt4.js" as="script"><link rel="prefetch" href="/learning-notes/assets/svm.html-Div-Hb-t.js" as="script"><link rel="prefetch" href="/learning-notes/assets/week-12.html-DkRXhCon.js" as="script"><link rel="prefetch" href="/learning-notes/assets/setupDevtools-7MC2TMWH-BtqJD9t-.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-67c08c1d><main class="page" data-v-67c08c1d><div class="theme-default-content" vp-content data-v-67c08c1d><h1 data-v-67c08c1d>404</h1><blockquote data-v-67c08c1d>That&#39;s a Four-Oh-Four.</blockquote><a class="route-link" href="/learning-notes/" data-v-67c08c1d>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/learning-notes/assets/app-DsOgR8nk.js" defer></script>
+  </body>
+</html>

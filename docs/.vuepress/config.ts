@@ -31,6 +31,7 @@ export default defineUserConfig({
           {text: 'Basic', link: '/CPP/basic.md'},
           {text: 'Scope, Duration, and Linkage', link: '/CPP/scope.md'},
           {text: 'Pointers(1)', link: '/CPP/pointers.md'},
+          {text: 'Pointers(2)', link: '/CPP/pointers-2.md'},
         ],
       },
       {

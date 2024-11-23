@@ -1,6 +1,6 @@
 # Compound Types: References and Pointers
 
-## 1.Value categories (lvalues and rvalues)
+## 1. Value categories (lvalues and rvalues)
 The **value category** of an expression (or subexpression) indicates whether an expression resolves to a value, a function, or an object of some kind.
 - Prior to C++11, there were only two possible value categories: `lvalue` and `rvalue`.
 - In C++11, three additional value categories (`glvalue`, `prvalue`, and `xvalue`) were added to support a new feature called `move semantics`.
@@ -109,7 +109,7 @@ The answer is that lvalue expressions will implicitly convert to rvalue expressi
 - Lvalue expressions are those that evaluate to functions or identifiable objects (including variables) that persist beyond the end of the expression.
 - Rvalue expressions are those that evaluate to values, including literals and temporary objects that do not persist beyond the end of the expression.
 
-## Lvalue references
+## 2. Lvalue references
 In C++, a **reference** is an alias for an existing object. Once a reference has been defined, any operation on the reference is applied to the object being referenced. This means we can use a reference to read or modify the object being referenced.
 
 An **lvalue reference** (commonly just called a “reference” since prior to C++11 there was only one type of reference) acts as an alias for an existing lvalue (such as a variable).
@@ -225,7 +225,7 @@ When an object being reference is destoryed before a reference to it, the refere
 ### References aren't objects
 References are not objects in C++. A reference is not required to exist or occupy storage. If possible, the compiler will optimize references away by replacing all occurrences of a reference with the referent. However, this isn’t always possible, and in such cases, references may require storage.
 
-## Pass by lvalue reference
+## 3. Pass by lvalue reference
 Why create an alias to a variable when you can just use the variable itself?
 
 `pass by value`: where an argument passed to a function is **copied** into the function’s parameter:
@@ -400,7 +400,7 @@ For most C++ beginners, the choice of whether to use pass by value or pass by (c
 - Fundamental types and enumerated types are cheap to copy, so they are typically passed by value.
 - Class types can be expensive to copy (sometimes significantly so), so they are typically passed by const reference.
 
-## Introduction to pointers
+## 4.   Introduction to pointers
 ```cpp
 char x {}; // chars use 1 byte of memory
 ```

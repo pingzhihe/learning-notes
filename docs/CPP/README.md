@@ -13,3 +13,6 @@ C++ is a general-purpose programming language created by Bjarne Stroustrup as an
 [2. Scope, Duration, and Linkage](./scope.md)
 
 [3. Pointers(1)](./pointers.md)
+
+[4. Pointers(2)](./pointers-2.md)
+
